@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home page - Post{% endblock %}
+
+{% block body %}
+    <p>{{ post.user.email }} - {{ post.content }}</p>
+
+    {% if app.user %}
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        {{ form_end(form) }}
+    {% endif %}
+
+    {% for c in allComments %}
+        <p>{{ c.user.email }} - {{ c.content }}</p>
+    {% endfor %}
+{% endblock %}
