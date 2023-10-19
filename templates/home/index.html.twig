@@ -6,4 +6,9 @@
 {{ form_start(form) }}
 {{ form_widget(form) }}
 {{ form_end(form) }}
-{% endif %} {% endblock %}
+{% endif %}
+{% for p in allPosts %}
+    <p>{{ p.user.email }} - {{ p.content }} - <a href="{{ path('app_post', {id: p.id}) }}">Commentaires</a></p>
+{% endfor %}
+
+{% endblock %}
