@@ -48,6 +48,9 @@ class HomeController extends AbstractController
         $user = $this->getUser();
         $post = $em->getRepository(Post::class)->find($id);
         $allComments = $em->getRepository(Comment::class)->findBy(['post' => $post]);
+        //->find() pour récuperer une seule données grace à une condition ex: ->find(['id' => 4]);
+        //->findBy() pour récuperer plusieurs données grace à une condition ex: ->findBy(['nom' => 'Fontaine']);
+
 
         if ($user) {
             $comment = new Comment();
@@ -57,8 +60,9 @@ class HomeController extends AbstractController
             if ($form->isSubmitted() && $form->isValid()) {
                 $comment->setUser($user);
                 $comment->setPost($post);
-                $em->persist($comment);
-                $em->flush();
+                $em->persist($comment); //ajouter dans la db
+                //->remove() enlever de la db
+                $em->flush(); //faire la requete
 
                 return $this->redirectToRoute('app_post', ['id' => $id]);
             }
