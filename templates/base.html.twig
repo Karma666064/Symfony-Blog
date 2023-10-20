@@ -11,6 +11,15 @@
         {% endblock %}
     </head>
     <body>
+        {# <ul>
+            <li><a href="#">Home</a></li>
+            {% if app.user %}
+                <li><a href="#">Logout</a></li>
+            {% endif %}
+            <li><a href="#">Login</a></li>
+            <li><a href="#">Register</a></li>
+        </ul> #}
+
         {% block body %}{% endblock %}
     </body>
 </html>
